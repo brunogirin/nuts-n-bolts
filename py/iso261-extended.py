@@ -36,7 +36,10 @@ def load_csv(datain):
                 current_entry['extended'] = True
             data.append(current_entry)
             last_dia = dia
-        current_entry['P'].append(float(row[3]))
+        if fpattern.match(row[3]):
+            current_entry['P'].append(float(row[3]))
+        else:
+            current_entry['P'].append(int(row[3]))
     return data
 
 
