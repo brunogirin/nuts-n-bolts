@@ -20,3 +20,4 @@ module screw(height, pitch, poly, slices=100) {
     linear_extrude(height=height, convexity=10, twist=-360*height/pitch, slices=slices)
     polygon( points=poly );
 }
+

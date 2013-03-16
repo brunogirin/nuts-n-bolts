@@ -49,7 +49,7 @@ def process_spec(key, spec, dataout, precision=5):
                                 ','.join(['[{0:.{2}f},{1:.{2}f}]'.format(q['x'], q['y'], precision) for q in poly])
                                 )
                           )
-        dataout.write('}\n')
+        dataout.write('}\n\n')
 
 def init_specs(dataout, include='', license=''):
     if license != '':
