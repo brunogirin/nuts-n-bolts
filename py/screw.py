@@ -29,7 +29,7 @@ def sample(points, maxdx=0.1, scale_to=2*math.pi):
         yield p
         prev = p
 
-def process_spec(key, spec, dataout, precision=5):
+def process_spec(key, spec, dataout, precision=5, items_per_line=4):
         dataout.write('\nmodule {0}(height, slices=100) {{\n'.format(key))
         if 'alias' in spec:
             dataout.write('    {0}(height, slices);\n'.format(spec['alias']))
@@ -46,7 +46,11 @@ def process_spec(key, spec, dataout, precision=5):
                      } for p in sample(spec['profile'], maxdx)]
             dataout.write('    screw(height, {0}, [{1}], slices);\n'.format(
                                 pitch,
-                                ','.join(['[{0:.{2}f},{1:.{2}f}]'.format(q['x'], q['y'], precision) for q in poly])
+                                ',\n'.join([
+                                    ', '.join([
+                                        '[{0:.{2}f},{1:.{2}f}]'.format(q['x'], q['y'], precision) for q in pp
+                                    ]) for pp in [poly[i:i+items_per_line] for i in xrange(0, len(poly), items_per_line)]
+                                ])
                                 )
                           )
         dataout.write('}\n\n')

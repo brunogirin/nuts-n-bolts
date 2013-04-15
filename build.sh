@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# The OpenTRV project licenses this file to you
+# The Nuts'n'bolts project licenses this file to you
 # under the Apache Licence, Version 2.0 (the "Licence");
 # you may not use this file except in compliance
 # with the Licence. You may obtain a copy of the Licence at
