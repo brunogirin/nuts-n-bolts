@@ -63,7 +63,6 @@ build() {
 }
 
 base=$(dirname $0)
-echo $base
 clean
 build
 
