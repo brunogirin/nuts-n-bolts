@@ -42,7 +42,7 @@ mk_files() {
                 opt=""
             fi
             echo "Processing $base/py/screw.py $opt -l $base/license-header.scad $1/$f $2/$b.scad"
-            ./py/screw.py $opt -l $base/license-header.scad "$1/$f" "$2/$b.scad"
+            $base/py/screw.py $opt -l $base/license-header.scad "$1/$f" "$2/$b.scad"
         fi
     done
 }
