@@ -31,18 +31,18 @@ mk_build() {
 mk_files() {
     for f in $(ls "$1"); do
         b=${f%.*}
-        c="./py/$b.py"
+        c="$base/py/$b.py"
         if [ -x "$c" ]; then
-            echo "Processing $c -l ./license-header.scad $1/$f $2/$b.scad"
-            $c -l ./license-header.scad "$1/$f" "$2/$b.scad"
+            echo "Processing $c -l $base/license-header.scad $1/$f $2/$b.scad"
+            $c -l $base/license-header.scad "$1/$f" "$2/$b.scad"
         else
             if [ -n "$3" ]; then
                 opt="-i $3"
             else
                 opt=""
             fi
-            echo "Processing ./py/screw.py $opt -l ./license-header.scad $1/$f $2/$b.scad"
-            ./py/screw.py $opt -l ./license-header.scad "$1/$f" "$2/$b.scad"
+            echo "Processing $base/py/screw.py $opt -l $base/license-header.scad $1/$f $2/$b.scad"
+            ./py/screw.py $opt -l $base/license-header.scad "$1/$f" "$2/$b.scad"
         fi
     done
 }
@@ -58,10 +58,12 @@ mk_tree() {
 
 build() {
     mk_build
-    mk_tree ./src ./build/scad
-    mk_tree ./test ./build/test ../scad
+    mk_tree $base/src $base/build/scad
+    mk_tree $base/test $base/build/test ../scad
 }
 
+base=$(dirname $0)
+echo $base
 clean
 build
 
