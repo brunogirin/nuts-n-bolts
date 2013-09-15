@@ -17,15 +17,15 @@
 # Author(s) / Copyright (s): Bruno Girin 2013
 
 clean() {
-    if [ -d "./build" ]; then
-        rm -rf build
+    if [ -d "$base/build" ]; then
+        rm -rf $base/build
     fi
 }
 
 mk_build() {
-    mkdir build
-    mkdir build/scad
-    mkdir build/test
+    mkdir $base/build
+    mkdir $base/build/scad
+    mkdir $base/build/test
 }
 
 mk_files() {
